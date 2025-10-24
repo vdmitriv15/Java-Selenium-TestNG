@@ -1,0 +1,2 @@
+# Test data containing real credentials can be customized locally
+src/test/resources/testdata.json

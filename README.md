@@ -1,6 +1,7 @@
 # Java Selenium TestNG Framework
 
-This project contains a basic Selenium + TestNG automation framework built using the Page Object Model (POM) pattern. The first sample test covers a successful login to [Sauce Demo](https://www.saucedemo.com/).
+This project contains a basic Selenium + TestNG automation framework built using the Page Object Model (POM) pattern. The first
+sample test covers a successful login to [Sauce Demo](https://www.saucedemo.com/).
 
 ## Tech stack
 - Java 11
@@ -30,11 +31,31 @@ src
                     └── LoginTest.java
 ```
 
-## Running the tests
-1. Ensure you have Java 11+ and Maven installed.
-2. Execute the tests with:
+## Getting started
+1. Ensure the following tools are available on your machine:
+   - Java 11 or newer
+   - Maven 3.8+
+   - Google Chrome (the tests use headless Chrome)
+2. Install project dependencies and compile the code:
    ```bash
-   mvn test
+   mvn clean compile
    ```
 
-> **Note:** The tests run Chrome in headless mode. Google Chrome must be installed on the machine executing the tests.
+## Running the tests
+- Execute the full suite with Maven:
+  ```bash
+  mvn clean test
+  ```
+- Run the TestNG suite file explicitly (useful when adding more suites):
+  ```bash
+  mvn -Dsurefire.suiteXmlFiles=testng.xml test
+  ```
+- You can also run the `testng.xml` suite directly from your IDE's TestNG runner.
+
+### Test data
+The sample login test signs in with the Sauce Demo credentials `standard_user` / `secret_sauce`. Update `LoginTest` if you want to parameterize or externalize credentials for your environment.
+
+### Reports
+After a run, Maven Surefire HTML reports are generated under `target/surefire-reports`. Open `index.html` in a browser to review the results.
+
+> **Note:** WebDriverManager downloads the matching ChromeDriver binary automatically at runtime. Internet access is required the first time the tests execute on a new machine.
